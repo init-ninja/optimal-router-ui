@@ -7,9 +7,10 @@ import { MAPBOX_TOKEN } from '../../config'
 class InputContainer extends React.Component {
   constructor(props) {
     super(props)
+    this.renderRowTemplate = this.renderRowTemplate.bind(this)
 
     this.state = {
-      inputs: [{
+      rows: [{
         id: 0,
         address: 'Stockholm'
       }, {
@@ -22,16 +23,8 @@ class InputContainer extends React.Component {
     }
   }
 
-  handleSelectPoint() {
-
-  }
-
-  handleRemovePoint() {
-
-  }
-
-  render() {
-    this.state.inputs.forEach(input => {
+  renderRowTemplate() {
+    return (
       <div>
         <Geocoder
           inputPlaceholder="Search Address"
@@ -43,6 +36,24 @@ class InputContainer extends React.Component {
           <AddIcon />
         </Button>
       </div>
-    })
+    )
+  }
+
+  handleSelectPoint() {
+
+  }
+
+  handleRemovePoint() {
+
+  }
+
+  render() {
+    return (
+      <div>
+        {this.state.rows.map(this.renderRowTemplate)}
+      </div>
+    )
   }
 }
+
+export default InputContainer

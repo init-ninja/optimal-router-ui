@@ -2,11 +2,22 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import SidePane from './features/SidePane'
+import { getRoutes } from './helpers/api-helper'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+
+    }
+  }
 
   onInputDone(inputs) {
-    console.log(inputs)
+    getRoutes(inputs).then((response) => {
+      response.json().then((data) => console.log(data))
+      // TODO: Link inputs (has point latlng + point names) and data (has only point latlngs)
+    })
   }
 
   render() {

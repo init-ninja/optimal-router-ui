@@ -4,6 +4,11 @@ import './App.css';
 import SidePane from './features/SidePane'
 
 class App extends Component {
+
+  onInputDone(inputs) {
+    console.log(inputs)
+  }
+
   render() {
     return (
       <div className="App">
@@ -11,7 +16,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <SidePane />
+        <SidePane onInputDone={this.onInputDone.bind(this)} />
       </div>
     );
   }

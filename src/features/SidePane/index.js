@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import InputContainer from './components/InputContainer'
 
-class App extends Component {
+class SidePane extends Component {
   render() {
     return (
       <div>
-        <InputContainer />
+        <InputContainer onInputDone={this.props.onInputDone}/>
       </div>
     )
   }
 }
 
-export default App;
+export default SidePane;

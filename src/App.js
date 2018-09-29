@@ -4,19 +4,23 @@ import './App.css';
 import SidePane from './features/SidePane'
 import { getRoutes } from './helpers/api-helper'
 
+
 class App extends Component {
   constructor(props) {
     super(props)
-
     this.state = {
-
+       input: [],
+       routes: []
     }
   }
 
-  onInputDone(inputs) {
-    getRoutes(inputs).then((response) => {
-      response.json().then((data) => console.log(data))
-      // TODO: Link inputs (has point latlng + point names) and data (has only point latlngs)
+  onInputDone(input) {
+    getRoutes(input).then((response) => {
+      response.json().then((data) => this.setState(
+         {
+            input : input,
+            routes : data
+         }))
     })
   }
 
@@ -27,7 +31,10 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <SidePane onInputDone={this.onInputDone.bind(this)} />
+        <SidePane
+           onInputDone={this.onInputDone.bind(this)}
+           input={this.state.input}
+           routes={this.state.routes} />
       </div>
     );
   }

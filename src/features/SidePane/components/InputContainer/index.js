@@ -16,7 +16,6 @@ class SearchBox extends React.Component {
   }
 
   render() {
-    console.log(this.props.loc)
     return (
     // TODO: fix the placeholder   
     <div>
@@ -41,15 +40,9 @@ class InputContainer extends React.Component {
   }
 
   add(id, input) {
-    //console.log("InputContainer> add : id = " + id + ", input = " + input)
-    //console.log(input)
-    console.log(input['place_name'])
-    console.log(input['center'])
     var ips = this.state.inputs
     ips.push({id: id, loc: input['place_name'], point : input['center'] })
     this.setState({inputs: ips})
-    console.log(this.state)
-
   }
 
   onDoneClick() {
